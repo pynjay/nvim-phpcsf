@@ -1,5 +1,4 @@
 local M = {};
-local json = require "json"
 
 local loop = vim.loop
 local root = vim.loop.cwd()
@@ -104,7 +103,7 @@ M.publish_diagnostic = function (results, bufnr)
 end
 
 function parse_json(encoded, bufnr)
-    local decoded = json.decode(encoded)
+    local decoded = vim.fn.json_decode(encoded)
     local diagnostics = {}
     local uri = vim.api.nvim_buf_get_name(bufnr);
 
